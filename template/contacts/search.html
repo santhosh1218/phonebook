@@ -1,0 +1,27 @@
+{% extends 'contacts/home.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/display.css'%}">
+{% endblock %}
+{% block content %}
+   
+    <table>
+       <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>contact image</th>
+        <th>Action</th>
+       </tr>
+       <tr>
+        <td>{{data.name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.mobile}}</td>
+        <td><img src="{{data.img.url}}" alt="" width="100px"></td>
+        <td><a href="{%url 'contacts:update' data.id %}">Edit</a>
+            <a href="{%url 'contacts:delete' data.id %}">Delete</a>
+        </td>
+       </tr>
+    </table>
+    
+{% endblock %}

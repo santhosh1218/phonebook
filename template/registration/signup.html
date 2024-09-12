@@ -1,0 +1,31 @@
+{% extends 'contacts/home.html'%}
+{% block content %}
+<div class="container mt-3 mb-4"></div>
+    <h2 class="text-center text-primary">Please Signup!</h2>
+    <hr>
+    <center>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="bg-white">
+        <table class="justify-content-center">
+            {% for form in form %}
+            <tr>
+                <td>
+                    {{form.label}}
+                </td>
+                <td>{{form}}</td>
+            </tr>
+            {% endfor %}
+           
+       </table>
+      
+        <button class="btn btn-outline btn-primary" type="submit">Signup</button>
+        <small>already have account?<a class="btn btn-sm btn-dark" href="{%url 'phonebookapp:login' %}">Login</a></small>
+
+    </div>
+
+   
+</form>
+</center>
+</div>
+{% endblock %}

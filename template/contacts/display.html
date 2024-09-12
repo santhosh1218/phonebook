@@ -1,0 +1,31 @@
+{% extends 'contacts/home.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/display.css'%}">
+{% endblock %}
+{% block content %}
+    <h2>ALL Contacts</h2>
+    <a href="{%url 'phonebookapp:create'%}">Add Contact</a>
+   
+    <table>
+       <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>contact image</th>
+        <th>Action</th>
+       </tr>
+       {% for data in data %}
+       <tr>
+        <td>{{data.name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.mobile}}</td>
+        <td><img src="{{data.img.url}}" alt="" width="100px"></td>
+        <td><a href="{%url 'phonebookapp:update' data.id %}">Edit</a>
+            <a href="{%url 'phonebookapp:delete' data.id %}">Delete</a>
+        </td>
+       </tr>
+       {% endfor %}
+    </table>
+    
+{% endblock %}
